@@ -1,0 +1,7 @@
+richard
+p
+wK 7 7
+wP 7 5
+bK 0 0
+bQ 6 0
+###

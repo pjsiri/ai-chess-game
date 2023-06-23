@@ -4,10 +4,10 @@
  */
 package Chess_Project_2;
 
-import ChessGame.Pieces.Piece;
-import ChessGame.PiecesOnBoard;
-import ChessGame.Pieces.PieceColour;
-import ChessGame.Pieces.Pawn;
+import ChessGame.Piece.Piece;
+import ChessGame.Board.PiecesOnBoard;
+import ChessGame.Piece.PieceColour;
+import ChessGame.Piece.Pawn;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

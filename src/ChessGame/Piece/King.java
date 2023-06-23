@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package ChessGame.Pieces;
+package ChessGame.Piece;
 
-import ChessGame.PiecesOnBoard;
+import ChessGame.Board.PiecesOnBoard;
 
 /**
  *

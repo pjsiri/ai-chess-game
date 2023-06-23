@@ -5,7 +5,7 @@
 package ChessGame.GUI;
 
 import ChessGame.ChessController;
-import ChessGame.Pieces.Piece;
+import ChessGame.Piece.Piece;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;

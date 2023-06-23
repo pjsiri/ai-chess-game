@@ -2,45 +2,45 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package ChessGame.Pieces;
+package ChessGame.Piece;
 
-import ChessGame.PiecesOnBoard;
+import ChessGame.Board.PiecesOnBoard;
 
 /**
  *
  * @author rh200
  */
-public class Bishop extends Piece {
+public class Queen extends Piece {
     
     private boolean[][] availableMoves = new boolean[8][8];
     private boolean[][] targetArea = new boolean[8][8];
     private PiecesOnBoard pieces;
     
-    public Bishop(PieceColour colour,int col, int row)
+    public Queen(PieceColour colour,int col, int row)
     {
         super(colour, col, row);
     }
     
-    public Bishop(PieceColour colour, int col, int row, int LMN, boolean HNM, boolean HMO)
+    public Queen(PieceColour colour, int col, int row, int LMN, boolean HNM, boolean HMO)
     {
         super(colour, col, row, LMN, HNM, HMO);
     }
     
-    //return white bishop or black bishop symbol
+    //return white queen or black queen symbol
     @Override
     public String getSymbol()
     {
         if (getColour() == PieceColour.WHITE) 
         {
-            return "wB";
+            return "wQ";
         } 
         else
         {
-            return "bB";
+            return "bQ";
         }
     }
     
-    //return bishop's available moves (diagonally)
+    //return queen's available moves (horizontally, vertically, and diagonally)
     //move can be unavailable due to the board boundary, the same colour pieces, or under pin.
     @Override
     public boolean[][] getAvailableMoves()
@@ -57,12 +57,16 @@ public class Bishop extends Piece {
             }
         }
         
+        setAvailableMoves(col+1, row);
+        setAvailableMoves(col-1, row);
+        setAvailableMoves(col, row+1);
+        setAvailableMoves(col, row-1);
         setAvailableMoves(col+1, row+1);
         setAvailableMoves(col+1, row-1);
         setAvailableMoves(col-1, row+1);
         setAvailableMoves(col-1, row-1);
         
-        //if bishop is under pin, then return the available moves within the pin path
+        //if queen is under pin, then return the available moves within the pin path
         if(super.isUnderPin())
         {
             boolean[][] newAvailableMoves = new boolean[8][8];
@@ -91,9 +95,9 @@ public class Bishop extends Piece {
         return availableMoves;
     }
     
-    //return bishop's targeting squares (diagonally)
-    //if bishop pin the opponemt king, send the pin path to the piece that is under the pin and set its isUnderPin to true.
-    //if bishop check the opponent king, send the check path to the PiecesOnBoard class for movement restriction.
+    //return queen's targeting squares (horizontally, vertically, and diagonally)
+    //if queen pin the opponemt king, send the pin path to the piece that is under the pin and set its isUnderPin to true.
+    //if queen check the opponent king, send the check path to the PiecesOnBoard class for movement restriction.
     @Override
     public boolean[][] getTargetArea()
     {
@@ -109,6 +113,10 @@ public class Bishop extends Piece {
             }
         }
         
+        setTargetArea(col+1, row);
+        setTargetArea(col-1, row);
+        setTargetArea(col, row+1);
+        setTargetArea(col, row-1);
         setTargetArea(col+1, row+1);
         setTargetArea(col+1, row-1);
         setTargetArea(col-1, row+1);
@@ -117,7 +125,7 @@ public class Bishop extends Piece {
         return targetArea;
     }
     
-    //return a further column away from the bishop
+    //return a column further away from the queen
     private int setColUpOrDown(int col)
     {
         if((col - super.getColumn()) > 0)
@@ -132,7 +140,7 @@ public class Bishop extends Piece {
         return col;
     }
     
-    //return a further row away from the bishop
+    //return a row further away from the queen
     private int setRowUpOrDown(int row)
     {
         if((row - super.getRow()) > 0)
@@ -146,7 +154,7 @@ public class Bishop extends Piece {
         return row;
     }
         
-    //set bishop's available squares
+    //set queen's available squares
     private void setAvailableMoves(int col, int row)
     {
         while(col <= 7 && col >= 0 && row <= 7 && row >= 0)
@@ -168,7 +176,7 @@ public class Bishop extends Piece {
         }
     }
     
-    //set bishop's targeting squares as targeted
+    //set queen's targeting squares as targeted
     private void setTargetArea(int col, int row)
     {
         while(col <= 7 && col >= 0 && row <= 7 && row >= 0)
@@ -177,8 +185,8 @@ public class Bishop extends Piece {
             {
                 targetArea[col][row] = true;
                 
-                //if bishop check the opponent king, send the check path to the PiecesOnBoard class for movement restriction.
-                if(pieces.getPiece(col, row).getColour() != super.getColour() 
+                //if queen check the opponent king, send the check path to the PiecesOnBoard class for movement restriction.
+                if (pieces.getPiece(col, row).getColour() != super.getColour() 
                 && pieces.getPiece(col, row).getSymbol().contains("K"))
                 {
                     pieces.setInCheck(pieces.getPiece(col, row).getColour(), getPath(col, row));
@@ -186,9 +194,8 @@ public class Bishop extends Piece {
                     row = setRowUpOrDown(row);
                     continue;
                 }
-                
-                //if bishop pin the opponemt king, send the pin path to the piece that is under pin and set its isUnderPin to true.
-                else if(pieces.getPiece(col, row).getColour() != super.getColour())
+                //if queen pin the opponemt king, send the pin path to the piece that is under pin and set its isUnderPin to true.
+                else if (pieces.getPiece(col, row).getColour() != super.getColour())
                 {
                     int pinnedCol = col;
                     int pinnedRow = row;

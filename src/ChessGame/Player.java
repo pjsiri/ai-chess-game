@@ -4,7 +4,7 @@
  */
 package ChessGame;
 
-import ChessGame.Pieces.PieceColour;
+import ChessGame.Piece.PieceColour;
 
 /**
  *

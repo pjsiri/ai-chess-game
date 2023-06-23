@@ -4,19 +4,20 @@
  */
 package ChessGame;
 
-import ChessGame.Pieces.Piece;
-import ChessGame.Pieces.PieceColour;
+import ChessGame.Board.PiecesOnBoard;
+import ChessGame.Piece.Piece;
+import ChessGame.Piece.PieceColour;
 import ChessGame.GUI.ChessFrame;
 import ChessGame.DataBase.GameHistory;
 import ChessGame.DataBase.GameHistoryRecorder;
 import ChessGame.DataBase.GameSaver;
 import ChessGame.DataBase.GameSaverRecorder;
-import ChessGame.Pieces.Bishop;
-import ChessGame.Pieces.King;
-import ChessGame.Pieces.Knight;
-import ChessGame.Pieces.Pawn;
-import ChessGame.Pieces.Queen;
-import ChessGame.Pieces.Rook;
+import ChessGame.Piece.Bishop;
+import ChessGame.Piece.King;
+import ChessGame.Piece.Knight;
+import ChessGame.Piece.Pawn;
+import ChessGame.Piece.Queen;
+import ChessGame.Piece.Rook;
 import ChessGame.Player;
 import java.sql.ResultSet;
 import java.sql.SQLException;

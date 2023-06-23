@@ -14,16 +14,18 @@ public class Knight extends Piece {
     
     private boolean[][] availableMoves = new boolean[8][8];
     private boolean[][] targetArea = new boolean[8][8];
-    private PiecesOnBoard pieces;
+    private PiecesOnBoard board;
     
-    public Knight(PieceColour colour,int col, int row)
+    public Knight(PieceColour colour,int col, int row, PiecesOnBoard board)
     {
         super(colour, col, row);
+        this.board = board;
     }
     
-    public Knight(PieceColour colour, int col, int row, int LMN, boolean HNM, boolean HMO)
+    public Knight(PieceColour colour, int col, int row, int LMN, boolean HNM, boolean HMO, PiecesOnBoard board)
     {
         super(colour, col, row, LMN, HNM, HMO);
+        this.board = board;
     }
     
     //return white knight or black knight symbol
@@ -41,11 +43,10 @@ public class Knight extends Piece {
     }
     
     //return knight's available moves (L-patterned move)
-    //move can be unavailable due to the board boundary, the same colour pieces, or under pin.
+    //move can be unavailable due to the board boundary, the same colour board, or under pin.
     @Override
     public boolean[][] getAvailableMoves()
     {
-        pieces = new PiecesOnBoard();
         int col = super.getColumn();
         int row = super.getRow();
         
@@ -89,7 +90,6 @@ public class Knight extends Piece {
     @Override
     public boolean[][] getTargetArea()
     {
-        pieces = new PiecesOnBoard();
         int col = super.getColumn();
         int row = super.getRow();
         
@@ -116,13 +116,13 @@ public class Knight extends Piece {
     //set knight's available squares
     private void setAvailableMoves(int col, int row)
     {
-        if(col <= 7 && col >= 0 && row <= 7 && row >= 0 && pieces.getCheckPath()[col][row])
+        if(col <= 7 && col >= 0 && row <= 7 && row >= 0 && board.getCheckPath()[col][row])
         {
-            if(pieces.getPiece(col, row) == null)
+            if(board.getPiece(col, row) == null)
             {
                 availableMoves[col][row] = true;
             }
-            else if(pieces.getPiece(col, row).getColour() != super.getColour())
+            else if(board.getPiece(col, row).getColour() != super.getColour())
             {
                 availableMoves[col][row] = true;
             }
@@ -136,10 +136,10 @@ public class Knight extends Piece {
         {
             targetArea[col][row] = true;
             
-            if(pieces.getPiece(col, row) != null)
+            if(board.getPiece(col, row) != null)
             {
                 //if knight check the opponent king, send the check path to the PiecesOnBoard class for movement restriction.
-                if(pieces.getPiece(col, row).getColour() != super.getColour() && pieces.getPiece(col, row).getSymbol().contains("K"))
+                if(board.getPiece(col, row).getColour() != super.getColour() && board.getPiece(col, row).getSymbol().contains("K"))
                 {
                     boolean[][] checkPath = new boolean[8][8];
                     for(int i = 0; i < 8; i++)
@@ -150,7 +150,7 @@ public class Knight extends Piece {
                         }
                     }
                     checkPath[super.getColumn()][super.getRow()] = true;
-                    pieces.setInCheck(pieces.getPiece(col, row).getColour(), checkPath);
+                    board.setInCheck(board.getPiece(col, row).getColour(), checkPath);
                 }
             }
         }

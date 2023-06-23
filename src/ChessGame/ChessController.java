@@ -18,7 +18,6 @@ import ChessGame.Piece.Knight;
 import ChessGame.Piece.Pawn;
 import ChessGame.Piece.Queen;
 import ChessGame.Piece.Rook;
-import ChessGame.Player;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
@@ -333,17 +332,17 @@ public class ChessController {
         HMOboolean = HMO == 1;
         
         if (pieceType.contains("P")) {
-            piece = new Pawn(colour, col, row, LMN, HNMboolean, HMOboolean);
+            piece = new Pawn(colour, col, row, LMN, HNMboolean, HMOboolean, board);
         } else if (pieceType.contains("Q")) {
-            piece = new Queen(colour, col, row, LMN, HNMboolean, HMOboolean);
+            piece = new Queen(colour, col, row, LMN, HNMboolean, HMOboolean, board);
         } else if (pieceType.contains("B")) {
-            piece = new Bishop(colour, col, row, LMN, HNMboolean, HMOboolean);
+            piece = new Bishop(colour, col, row, LMN, HNMboolean, HMOboolean, board);
         } else if (pieceType.contains("R")) {
-            piece = new Rook(colour, col, row, LMN, HNMboolean, HMOboolean);
+            piece = new Rook(colour, col, row, LMN, HNMboolean, HMOboolean, board);
         } else if (pieceType.contains("N")) {
-            piece = new Knight(colour, col, row, LMN, HNMboolean, HMOboolean);
+            piece = new Knight(colour, col, row, LMN, HNMboolean, HMOboolean, board);
         } else {
-            piece = new King(colour, col, row, LMN, HNMboolean, HMOboolean);
+            piece = new King(colour, col, row, LMN, HNMboolean, HMOboolean, board);
         }
         
         return piece;

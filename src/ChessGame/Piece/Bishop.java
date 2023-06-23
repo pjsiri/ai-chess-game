@@ -14,16 +14,18 @@ public class Bishop extends Piece {
     
     private boolean[][] availableMoves = new boolean[8][8];
     private boolean[][] targetArea = new boolean[8][8];
-    private PiecesOnBoard pieces;
+    private PiecesOnBoard board;
     
-    public Bishop(PieceColour colour,int col, int row)
+    public Bishop(PieceColour colour,int col, int row, PiecesOnBoard board)
     {
         super(colour, col, row);
+        this.board = board;
     }
     
-    public Bishop(PieceColour colour, int col, int row, int LMN, boolean HNM, boolean HMO)
+    public Bishop(PieceColour colour, int col, int row, int LMN, boolean HNM, boolean HMO, PiecesOnBoard board)
     {
         super(colour, col, row, LMN, HNM, HMO);
+        this.board = board;
     }
     
     //return white bishop or black bishop symbol
@@ -41,11 +43,10 @@ public class Bishop extends Piece {
     }
     
     //return bishop's available moves (diagonally)
-    //move can be unavailable due to the board boundary, the same colour pieces, or under pin.
+    //move can be unavailable due to the board boundary, the same colour board, or under pin.
     @Override
     public boolean[][] getAvailableMoves()
     {
-        pieces = new PiecesOnBoard();
         int col = super.getColumn();
         int row = super.getRow();
         
@@ -97,7 +98,6 @@ public class Bishop extends Piece {
     @Override
     public boolean[][] getTargetArea()
     {
-        pieces = new PiecesOnBoard();
         int col = super.getColumn();
         int row = super.getRow();
         
@@ -151,16 +151,16 @@ public class Bishop extends Piece {
     {
         while(col <= 7 && col >= 0 && row <= 7 && row >= 0)
         {
-            if(pieces.getPiece(col, row) == null)
+            if(board.getPiece(col, row) == null)
             {
-                if (pieces.getCheckPath()[col][row]) {
+                if (board.getCheckPath()[col][row]) {
                     availableMoves[col][row] = true;
                 }
                 col = setColUpOrDown(col);
                 row = setRowUpOrDown(row);
                 continue;
             }
-            else if(pieces.getPiece(col, row).getColour() != super.getColour() && pieces.getCheckPath()[col][row])
+            else if(board.getPiece(col, row).getColour() != super.getColour() && board.getCheckPath()[col][row])
             {
                 availableMoves[col][row] = true;
             }
@@ -173,22 +173,22 @@ public class Bishop extends Piece {
     {
         while(col <= 7 && col >= 0 && row <= 7 && row >= 0)
         {
-            if(pieces.getPiece(col, row) != null)
+            if(board.getPiece(col, row) != null)
             {
                 targetArea[col][row] = true;
                 
                 //if bishop check the opponent king, send the check path to the PiecesOnBoard class for movement restriction.
-                if(pieces.getPiece(col, row).getColour() != super.getColour() 
-                && pieces.getPiece(col, row).getSymbol().contains("K"))
+                if(board.getPiece(col, row).getColour() != super.getColour() 
+                && board.getPiece(col, row).getSymbol().contains("K"))
                 {
-                    pieces.setInCheck(pieces.getPiece(col, row).getColour(), getPath(col, row));
+                    board.setInCheck(board.getPiece(col, row).getColour(), getPath(col, row));
                     col = setColUpOrDown(col);
                     row = setRowUpOrDown(row);
                     continue;
                 }
                 
                 //if bishop pin the opponemt king, send the pin path to the piece that is under pin and set its isUnderPin to true.
-                else if(pieces.getPiece(col, row).getColour() != super.getColour())
+                else if(board.getPiece(col, row).getColour() != super.getColour())
                 {
                     int pinnedCol = col;
                     int pinnedRow = row;
@@ -197,17 +197,17 @@ public class Bishop extends Piece {
                     
                     while(col <= 7 && col >= 0 && row <= 7 && row >= 0)
                     {
-                        if(pieces.getPiece(col, row) == null)
+                        if(board.getPiece(col, row) == null)
                         {
                             col = setColUpOrDown(col);
                             row = setRowUpOrDown(row);
                             continue;
                         }
-                        else if(pieces.getPiece(col, row).getColour() != super.getColour() 
-                                && pieces.getPiece(col, row).getSymbol().contains("K"))
+                        else if(board.getPiece(col, row).getColour() != super.getColour() 
+                                && board.getPiece(col, row).getSymbol().contains("K"))
                         {
-                            pieces.getPiece(pinnedCol, pinnedRow).setUnderPin(true);
-                            pieces.getPiece(pinnedCol, pinnedRow).setPinPath(getPath(col, row));
+                            board.getPiece(pinnedCol, pinnedRow).setUnderPin(true);
+                            board.getPiece(pinnedCol, pinnedRow).setPinPath(getPath(col, row));
                             break;
                         }
                         else

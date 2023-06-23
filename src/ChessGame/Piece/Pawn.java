@@ -14,16 +14,18 @@ public class Pawn extends Piece {
     
     private boolean[][] availableMoves = new boolean[8][8];
     private boolean[][] targetArea = new boolean[8][8];
-    private PiecesOnBoard pieces;
+    private PiecesOnBoard board;
     
-    public Pawn(PieceColour colour,int col, int row)
+    public Pawn(PieceColour colour,int col, int row, PiecesOnBoard board)
     {
         super(colour, col, row);
+        this.board = board;
     }
     
-    public Pawn(PieceColour colour, int col, int row, int LMN, boolean HNM, boolean HMO)
+    public Pawn(PieceColour colour, int col, int row, int LMN, boolean HNM, boolean HMO, PiecesOnBoard board)
     {
         super(colour, col, row, LMN, HNM, HMO);
+        this.board = board;
     }
     
     //return white pawn or black pawn symbol
@@ -42,7 +44,6 @@ public class Pawn extends Piece {
     @Override
     public boolean[][] getAvailableMoves()
     {
-        pieces = new PiecesOnBoard();
         resetAvailableMoves();
         setAvailableMove(super.getColumn());
         setAvailableMove(super.getColumn()+1);
@@ -101,16 +102,16 @@ public class Pawn extends Piece {
         //one square forward
         if(row <= 7 && row >= 0 && col <= 7 && col >= 0)
         {
-            if((col == super.getColumn() && pieces.getPiece(col, row) == null) 
-                    || (col != super.getColumn() && pieces.getPiece(col, row) != null && pieces.getPiece(col, row).getColour() != super.getColour()) 
-                    || pieces.isEnPassant(this, col, row))
+            if((col == super.getColumn() && board.getPiece(col, row) == null) 
+                    || (col != super.getColumn() && board.getPiece(col, row) != null && board.getPiece(col, row).getColour() != super.getColour()) 
+                    || board.isEnPassant(this, col, row))
             {
-                if (pieces.getCheckPath()[col][row]) {
+                if (board.getCheckPath()[col][row]) {
                     availableMoves[col][row] = true;
                 }
 
                 //two squares advance
-                if(super.hasNotMoved() && col == super.getColumn() && pieces.getPiece(super.getColumn(), row+forwardValue) == null && pieces.getCheckPath()[super.getColumn()][row+forwardValue])
+                if(super.hasNotMoved() && col == super.getColumn() && board.getPiece(super.getColumn(), row+forwardValue) == null && board.getCheckPath()[super.getColumn()][row+forwardValue])
                 {
                     availableMoves[super.getColumn()][row+forwardValue] = true;
                 }
@@ -123,7 +124,6 @@ public class Pawn extends Piece {
     @Override
     public boolean[][] getTargetArea()
     {
-        pieces = new PiecesOnBoard();
         resetTargetArea();
         setTargetArea(super.getColumn() + 1);
         setTargetArea(super.getColumn() - 1);
@@ -157,7 +157,7 @@ public class Pawn extends Piece {
             targetArea[col][row] = true;
             
             //if pawn check the opponent king, send the check path to the PiecesOnBoard class for movement restriction.
-            if(pieces.getPiece(col, row) != null && pieces.getPiece(col, row).getSymbol().contains("K") && pieces.getPiece(col, row).getColour() != super.getColour())
+            if(board.getPiece(col, row) != null && board.getPiece(col, row).getSymbol().contains("K") && board.getPiece(col, row).getColour() != super.getColour())
             {
                 boolean[][] checkPath = new boolean[8][8];
                 for(int i = 0; i < 8; i++)
@@ -168,7 +168,7 @@ public class Pawn extends Piece {
                     }
                 }
                 checkPath[super.getColumn()][super.getRow()] = true;
-                pieces.setInCheck(pieces.getPiece(col, row).getColour(), checkPath);
+                board.setInCheck(board.getPiece(col, row).getColour(), checkPath);
             }
         }
     }

@@ -14,16 +14,18 @@ public class King extends Piece {
     
     private boolean[][] availableMoves = new boolean[8][8];
     private boolean[][] targetArea = new boolean[8][8];
-    private PiecesOnBoard pieces;
+    private PiecesOnBoard board;
 
-    public King(PieceColour colour, int col, int row)
+    public King(PieceColour colour, int col, int row, PiecesOnBoard board)
     {
         super(colour, col, row);
+        this.board = board;
     }
     
-    public King(PieceColour colour, int col, int row, int LMN, boolean HNM, boolean HMO)
+    public King(PieceColour colour, int col, int row, int LMN, boolean HNM, boolean HMO, PiecesOnBoard board)
     {
         super(colour, col, row, LMN, HNM, HMO);
+        this.board = board;
     }
     
     //return white king or black king symbol
@@ -44,7 +46,6 @@ public class King extends Piece {
     @Override
     public boolean[][] getAvailableMoves()
     {
-        pieces = new PiecesOnBoard();
         int col = super.getColumn();
         int row = super.getRow();
 
@@ -76,7 +77,6 @@ public class King extends Piece {
     @Override
     public boolean[][] getTargetArea()
     {
-        pieces = new PiecesOnBoard();
         int col = super.getColumn();
         int row = super.getRow();
         
@@ -104,13 +104,13 @@ public class King extends Piece {
     {
         if(col <= 7 && col >= 0 && row <= 7 && row >= 0)
         {
-            if (pieces.isCastling(this, col, row))
+            if (board.isCastling(this, col, row))
             {
                 availableMoves[col][row] = true;
             }
             else if (Math.abs(col-this.getColumn()) < 2
-                    && (pieces.getPiece(col, row) == null || pieces.getPiece(col, row).getColour() != this.getColour()) 
-                    && !pieces.getPieces().getTargetAreas(this.getColour().getOppColour())[col][row])
+                    && (board.getPiece(col, row) == null || board.getPiece(col, row).getColour() != this.getColour()) 
+                    && !board.getPieces().getTargetAreas(this.getColour().getOppColour())[col][row])
             {
                 availableMoves[col][row] = true;
             }

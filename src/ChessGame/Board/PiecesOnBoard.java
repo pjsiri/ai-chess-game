@@ -17,18 +17,19 @@ import ChessGame.Piece.Rook;
  */
 public final class PiecesOnBoard {
    
-    private static final Piece[][] board = new Piece[8][8]; // [column][row]
-    private static final boolean[][] checkPath = new boolean[8][8]; // [column][row]
-    private static AllPieces allPieces = new AllPieces();
-    private static boolean whiteIsInCheck = false;
-    private static boolean blackIsInCheck = false;
-    private static boolean isPromoting = false;;
-    private static Piece promotionPawn = null;
-    private static int moveNum = 0;
+    private final Piece[][] board = new Piece[8][8]; // [column][row]
+    private final boolean[][] checkPath = new boolean[8][8]; // [column][row]
+    private AllPieces allPieces;
+    private boolean whiteIsInCheck = false;
+    private boolean blackIsInCheck = false;
+    private boolean isPromoting = false;;
+    private Piece promotionPawn = null;
+    private int moveNum = 0;
     
     //Contructs PiecesOnBoard class
     public PiecesOnBoard()
     {
+        allPieces = new AllPieces(this);
         refreshBoard();
     }
     
@@ -134,7 +135,7 @@ public final class PiecesOnBoard {
     public void resetBoardAndPieces()
     {
         moveNum = 0;
-        allPieces = new AllPieces();
+        allPieces = new AllPieces(this);
         refreshBoard();
     }
     
@@ -424,22 +425,22 @@ public final class PiecesOnBoard {
         
         if(pieceType.contains("Q"))
         {
-            promotion = new Queen(promotionPawn.getColour(), col, row);
+            promotion = new Queen(promotionPawn.getColour(), col, row, this);
             allPieces.replacePiece(promotion, col, row);
         }
         else if(pieceType.contains("B"))
         {
-            promotion = new Bishop(promotionPawn.getColour(), col, row);
+            promotion = new Bishop(promotionPawn.getColour(), col, row, this);
             allPieces.replacePiece(promotion, col, row);
         }
         else if(pieceType.contains("N"))
         {
-            promotion = new Knight(promotionPawn.getColour(), col, row);
+            promotion = new Knight(promotionPawn.getColour(), col, row, this);
             allPieces.replacePiece(promotion, col, row);
         }
         else if(pieceType.contains("R"))
         {
-            promotion = new Rook(promotionPawn.getColour(), col, row);
+            promotion = new Rook(promotionPawn.getColour(), col, row, this);
             allPieces.replacePiece(promotion, col, row);
         }   
         

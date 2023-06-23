@@ -159,8 +159,8 @@ public class PiecesOnBoardTest {
     @Test
     public void testAddPiece() {
         System.out.println("addPiece");
-        Piece piece = new Pawn(PieceColour.BLACK, 0, 0);
         PiecesOnBoard instance = new PiecesOnBoard();
+        Piece piece = new Pawn(PieceColour.BLACK, 0, 0, instance);
         instance.addPiece(piece);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
@@ -345,7 +345,7 @@ public class PiecesOnBoardTest {
         System.out.println("promote");
         String pieceType = "Q";
         PiecesOnBoard instance = new PiecesOnBoard();
-        instance.getPieces().replacePiece(new Pawn(PieceColour.WHITE, 0, 6), 0, 6);
+        instance.getPieces().replacePiece(new Pawn(PieceColour.WHITE, 0, 6, instance), 0, 6);
         instance.movePiece(0, 6, 1, 7);
         instance.promote(pieceType);
         // TODO review the generated test code and remove the default call to fail.

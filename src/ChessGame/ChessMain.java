@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Chess_Project_2;
+package ChessGame;
 
+import ChessGame.GUI.ChessFrame;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 

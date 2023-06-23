@@ -4,6 +4,8 @@
  */
 package Chess_Project_2;
 
+import ChessGame.GUI.ChessFrame;
+import ChessGame.GUI.ChessPanel;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;

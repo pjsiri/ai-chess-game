@@ -2,43 +2,45 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Chess_Project_2;
+package ChessGame.Pieces;
+
+import ChessGame.PiecesOnBoard;
 
 /**
  *
  * @author rh200
  */
-public class Rook extends Piece {
+public class Bishop extends Piece {
     
     private boolean[][] availableMoves = new boolean[8][8];
     private boolean[][] targetArea = new boolean[8][8];
     private PiecesOnBoard pieces;
     
-    public Rook(PieceColour colour,int col, int row)
+    public Bishop(PieceColour colour,int col, int row)
     {
         super(colour, col, row);
     }
     
-    public Rook(PieceColour colour, int col, int row, int LMN, boolean HNM, boolean HMO)
+    public Bishop(PieceColour colour, int col, int row, int LMN, boolean HNM, boolean HMO)
     {
         super(colour, col, row, LMN, HNM, HMO);
     }
     
-    //return white rook or black rook symbol
+    //return white bishop or black bishop symbol
     @Override
     public String getSymbol()
     {
         if (getColour() == PieceColour.WHITE) 
         {
-            return "wR";
+            return "wB";
         } 
         else
         {
-            return "bR";
+            return "bB";
         }
     }
     
-    //return rook's available moves (horizontally and vertically)
+    //return bishop's available moves (diagonally)
     //move can be unavailable due to the board boundary, the same colour pieces, or under pin.
     @Override
     public boolean[][] getAvailableMoves()
@@ -55,12 +57,12 @@ public class Rook extends Piece {
             }
         }
         
-        setAvailableMoves(col+1, row);
-        setAvailableMoves(col-1, row);
-        setAvailableMoves(col, row+1);
-        setAvailableMoves(col, row-1);
+        setAvailableMoves(col+1, row+1);
+        setAvailableMoves(col+1, row-1);
+        setAvailableMoves(col-1, row+1);
+        setAvailableMoves(col-1, row-1);
         
-        //if rook is under pin, then return the available moves within the pin path
+        //if bishop is under pin, then return the available moves within the pin path
         if(super.isUnderPin())
         {
             boolean[][] newAvailableMoves = new boolean[8][8];
@@ -89,9 +91,9 @@ public class Rook extends Piece {
         return availableMoves;
     }
     
-    //return rook's targeting squares (horizontally and vertically)
-    //if rook pin the opponemt king, send the pin path to the piece that is under the pin and set its isUnderPin to true.
-    //if rook check the opponent king, send the check path to the PiecesOnBoard class for movement restriction.
+    //return bishop's targeting squares (diagonally)
+    //if bishop pin the opponemt king, send the pin path to the piece that is under the pin and set its isUnderPin to true.
+    //if bishop check the opponent king, send the check path to the PiecesOnBoard class for movement restriction.
     @Override
     public boolean[][] getTargetArea()
     {
@@ -107,15 +109,15 @@ public class Rook extends Piece {
             }
         }
         
-        setTargetArea(col+1, row);
-        setTargetArea(col-1, row);
-        setTargetArea(col, row+1);
-        setTargetArea(col, row-1);
+        setTargetArea(col+1, row+1);
+        setTargetArea(col+1, row-1);
+        setTargetArea(col-1, row+1);
+        setTargetArea(col-1, row-1);
         
         return targetArea;
     }
     
-    //return a further column away from the rook
+    //return a further column away from the bishop
     private int setColUpOrDown(int col)
     {
         if((col - super.getColumn()) > 0)
@@ -130,7 +132,7 @@ public class Rook extends Piece {
         return col;
     }
     
-    //return a further row away from the rook
+    //return a further row away from the bishop
     private int setRowUpOrDown(int row)
     {
         if((row - super.getRow()) > 0)
@@ -144,7 +146,7 @@ public class Rook extends Piece {
         return row;
     }
         
-    //set rook's available squares
+    //set bishop's available squares
     private void setAvailableMoves(int col, int row)
     {
         while(col <= 7 && col >= 0 && row <= 7 && row >= 0)
@@ -166,7 +168,7 @@ public class Rook extends Piece {
         }
     }
     
-    //set rook's targeting squares as targeted
+    //set bishop's targeting squares as targeted
     private void setTargetArea(int col, int row)
     {
         while(col <= 7 && col >= 0 && row <= 7 && row >= 0)
@@ -175,7 +177,7 @@ public class Rook extends Piece {
             {
                 targetArea[col][row] = true;
                 
-                //if rook check the opponent king, send the check path to the PiecesOnBoard class for movement restriction.
+                //if bishop check the opponent king, send the check path to the PiecesOnBoard class for movement restriction.
                 if(pieces.getPiece(col, row).getColour() != super.getColour() 
                 && pieces.getPiece(col, row).getSymbol().contains("K"))
                 {
@@ -185,7 +187,7 @@ public class Rook extends Piece {
                     continue;
                 }
                 
-                //if rook pin the opponemt king, send the pin path to the piece that is under pin and set its isUnderPin to true.
+                //if bishop pin the opponemt king, send the pin path to the piece that is under pin and set its isUnderPin to true.
                 else if(pieces.getPiece(col, row).getColour() != super.getColour())
                 {
                     int pinnedCol = col;

@@ -2,8 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Chess_Project_2;
+package ChessGame.GUI;
 
+import ChessGame.ChessController;
+import ChessGame.GUI.ChessPanel;
+import ChessGame.Player;
 import java.awt.Font;
 import java.awt.Image;
 import java.sql.ResultSet;

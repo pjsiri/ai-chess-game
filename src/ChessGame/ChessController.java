@@ -2,8 +2,22 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Chess_Project_2;
+package ChessGame;
 
+import ChessGame.Pieces.Piece;
+import ChessGame.Pieces.PieceColour;
+import ChessGame.GUI.ChessFrame;
+import ChessGame.DataBase.GameHistory;
+import ChessGame.DataBase.GameHistoryRecorder;
+import ChessGame.DataBase.GameSaver;
+import ChessGame.DataBase.GameSaverRecorder;
+import ChessGame.Pieces.Bishop;
+import ChessGame.Pieces.King;
+import ChessGame.Pieces.Knight;
+import ChessGame.Pieces.Pawn;
+import ChessGame.Pieces.Queen;
+import ChessGame.Pieces.Rook;
+import ChessGame.Player;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;

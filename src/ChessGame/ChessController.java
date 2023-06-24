@@ -54,6 +54,11 @@ public class ChessController {
         colourTurn = PieceColour.WHITE;
     }
     
+    public int[] getBotMove()
+    {
+        return engine.getBotMove(colourTurn, 1);
+    }
+    
     public PiecesOnBoard getBoard()
     {
         return board;

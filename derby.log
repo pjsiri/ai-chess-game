@@ -1,12 +1,12 @@
 ----------------------------------------------------------------
-Sat Jun 24 14:23:04 NZST 2023:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0188-eb36-4bb7-000006bcaef0 
-on database directory C:\Users\rh200\Documents\NetBeansProjects\AI-Chess-Game\ChessDB with class loader sun.misc.Launcher$AppClassLoader@55f96302 
-Loaded from file:/C:/Users/rh200/Documents/NetBeansProjects/AI-Chess-Game/lib/derby.jar
+Sat Jun 24 15:02:07 NZST 2023:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0188-eb5a-0be1-00000e8ac410 
+on database directory C:\Users\User\Documents\NetBeansProjects\AI-Chess-Game\ChessDB with class loader sun.misc.Launcher$AppClassLoader@55f96302 
+Loaded from file:/C:/Users/User/Documents/NetBeansProjects/AI-Chess-Game/lib/derby.jar
 java.vendor=Oracle Corporation
 java.runtime.version=1.8.0_361-b09
-user.dir=C:\Users\rh200\Documents\NetBeansProjects\AI-Chess-Game
-os.name=Windows 11
+user.dir=C:\Users\User\Documents\NetBeansProjects\AI-Chess-Game
+os.name=Windows 10
 os.arch=amd64
 os.version=10.0
 derby.system.home=null

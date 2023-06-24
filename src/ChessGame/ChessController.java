@@ -56,7 +56,7 @@ public class ChessController {
     
     public int[] getBotMove()
     {
-        return engine.getBotMove(colourTurn, 1);
+        return engine.getBotMove(colourTurn, 3);
     }
     
     public PiecesOnBoard getBoard()

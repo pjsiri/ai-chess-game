@@ -69,14 +69,24 @@ public class AllPieces {
     private int getColourPoints(PieceColour colour)
     {
         int totalPoints = 0;
+        for(Piece i : getAllPieces(colour))
+        {
+            totalPoints += i.getPointValue();
+        }
+        return totalPoints;
+    }
+    
+    public ArrayList<Piece> getAllPieces(PieceColour colour)
+    {
+        ArrayList<Piece> colourPieces = new ArrayList<Piece>();
         for(Piece i : pieces)
         {
             if(i.getColour() == colour)
             {
-                totalPoints += i.getPointValue();
+                colourPieces.add(i);
             }
         }
-        return totalPoints;
+        return colourPieces;
     }
     
     //return a list of white pieces

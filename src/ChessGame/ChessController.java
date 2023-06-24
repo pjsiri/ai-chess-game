@@ -4,6 +4,7 @@
  */
 package ChessGame;
 
+import ChessGame.AI.ChessEngine;
 import ChessGame.Board.PiecesOnBoard;
 import ChessGame.Piece.Piece;
 import ChessGame.Piece.PieceColour;
@@ -30,6 +31,7 @@ import java.util.logging.Logger;
  */
 public class ChessController {
     
+    private static ChessEngine engine;
     private static PiecesOnBoard board;
     private static GameSaver gameSaver;
     private static GameSaverRecorder gameSRecorder;
@@ -52,8 +54,13 @@ public class ChessController {
         colourTurn = PieceColour.WHITE;
     }
     
+    public PiecesOnBoard getBoard()
+    {
+        return board;
+    }
+    
     // Returns current chess board
-    public Piece[][] getBoard()
+    public Piece[][] getBoardPosition()
     {
         return board.getBoard();
     }
@@ -79,11 +86,23 @@ public class ChessController {
         return colourTurn;
     }
     
-    // Sets players' name
+    // Sets players' name (Double Players)
     public void setPlayers(String playerWhite, String playerBlack)
     {
         setPlayer1(new Player(PieceColour.WHITE, playerWhite));
         setPlayer2(new Player(PieceColour.BLACK, playerBlack));
+    }
+    
+    // Sets player name (Single Player)
+    public void setPlayers(PieceColour colour, String playerName)
+    {
+        if(colour == PieceColour.WHITE) {
+            setPlayer1(new Player(PieceColour.WHITE, playerName));
+            setPlayer2(new Player(PieceColour.BLACK));
+        } else {
+            setPlayer1(new Player(PieceColour.WHITE));
+            setPlayer2(new Player(PieceColour.BLACK, playerName));
+        }
     }
     
     // Moves a chess piece and updates the board

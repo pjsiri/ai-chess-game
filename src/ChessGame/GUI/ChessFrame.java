@@ -36,6 +36,7 @@ public class ChessFrame extends JFrame {
     private int boardNum;
     private final ImageIcon background;
     private final ImageIcon blurBackground;
+    private final ImageIcon flipBackground;
     
     public ChessFrame() 
     {
@@ -44,6 +45,7 @@ public class ChessFrame extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         background = new ImageIcon("Images/background4.png");
         blurBackground = new ImageIcon("Images/blur.png");
+        flipBackground = new ImageIcon("Images/flipBlur.png");
         initComponents();
         pack();
         setLocationRelativeTo(null); // Center the frame on the screen
@@ -103,12 +105,12 @@ public class ChessFrame extends JFrame {
         restartButton = new javax.swing.JButton();
         drawButton = new javax.swing.JButton();
         resignButton = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
         SaveGameButton2 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         moveTextArea = new javax.swing.JTextArea();
         flipToggleButton = new javax.swing.JToggleButton();
+        jButton1 = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -124,7 +126,6 @@ public class ChessFrame extends JFrame {
         queenButton = new javax.swing.JButton();
         knightButton = new javax.swing.JButton();
         bishopButton = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
         jLabel17 = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
         loadLabel = new javax.swing.JLabel();
@@ -135,7 +136,7 @@ public class ChessFrame extends JFrame {
         jPanel1 = chessPanel;
         jLabel9 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -226,6 +227,11 @@ public class ChessFrame extends JFrame {
             @Override
             public void mouseExited(MouseEvent evt) {
                 jButton10.setForeground(Color.WHITE);
+            }
+        });
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
             }
         });
         jPanel11.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 140, 143, 35));
@@ -372,6 +378,7 @@ public class ChessFrame extends JFrame {
 
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("History games");
 
         jButton6.setText("Back");
@@ -412,6 +419,8 @@ public class ChessFrame extends JFrame {
             }
         });
         prevButton.setVisible(false);
+
+        jPanel6.setOpaque(false);
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -459,8 +468,9 @@ public class ChessFrame extends JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTabbedPane2.addTab("tab2", jPanel6);
+        jTabbedPane2.addTab("tab1", jPanel6);
 
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Save Game");
 
         gameList1.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
@@ -485,6 +495,8 @@ public class ChessFrame extends JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
+
+        jPanel2.setOpaque(false);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -517,12 +529,13 @@ public class ChessFrame extends JFrame {
                 .addComponent(saveGameButton)
                 .addGap(44, 44, 44)
                 .addComponent(jButton4)
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(83, Short.MAX_VALUE))
         );
 
-        jTabbedPane2.addTab("tab3", jPanel2);
+        jTabbedPane2.addTab("tab2", jPanel2);
 
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel7.setOpaque(false);
 
         restartButton.setText("Restart");
         restartButton.addActionListener(new java.awt.event.ActionListener() {
@@ -530,7 +543,7 @@ public class ChessFrame extends JFrame {
                 restartButtonActionPerformed(evt);
             }
         });
-        jPanel7.add(restartButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(199, 286, 100, 38));
+        jPanel7.add(restartButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 320, 100, 38));
 
         drawButton.setText("Draw");
         drawButton.addActionListener(new java.awt.event.ActionListener() {
@@ -538,7 +551,7 @@ public class ChessFrame extends JFrame {
                 drawButtonActionPerformed(evt);
             }
         });
-        jPanel7.add(drawButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(68, 342, 100, 38));
+        jPanel7.add(drawButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 380, 100, 38));
 
         resignButton.setText("Resign");
         resignButton.addActionListener(new java.awt.event.ActionListener() {
@@ -546,15 +559,7 @@ public class ChessFrame extends JFrame {
                 resignButtonActionPerformed(evt);
             }
         });
-        jPanel7.add(resignButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(68, 286, 100, 38));
-
-        jButton1.setText("Quit");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel7.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 420, 100, 34));
+        jPanel7.add(resignButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 320, 100, 38));
 
         SaveGameButton2.setText("Save Game");
         SaveGameButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -562,17 +567,21 @@ public class ChessFrame extends JFrame {
                 SaveGameButton2ActionPerformed(evt);
             }
         });
-        jPanel7.add(SaveGameButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(199, 342, 100, 38));
+        jPanel7.add(SaveGameButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 380, 100, 38));
 
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Chess Moves:");
-        jPanel7.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(68, 26, 93, 23));
+        jPanel7.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, 93, 23));
 
         moveTextArea.setColumns(20);
         moveTextArea.setRows(5);
         moveTextArea.setEditable(false);
         jScrollPane4.setViewportView(moveTextArea);
 
-        jPanel7.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(68, 55, 231, 204));
+        jScrollPane4.setWheelScrollingEnabled(false);
+        jScrollPane4.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER); // Disable horizontal scroll bar
+
+        jPanel7.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 231, 204));
 
         flipToggleButton.setText("Flip Toggle");
         flipToggleButton.addActionListener(new java.awt.event.ActionListener() {
@@ -580,13 +589,23 @@ public class ChessFrame extends JFrame {
                 flipToggleButtonActionPerformed(evt);
             }
         });
-        jPanel7.add(flipToggleButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(189, 26, 110, -1));
+        jPanel7.add(flipToggleButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 50, 110, -1));
 
-        jTabbedPane2.addTab("tab4", jPanel7);
+        jButton1.setText("Quit");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel7.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 460, 100, 34));
+
+        jTabbedPane2.addTab("tab3", jPanel7);
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Thank you for playing!");
 
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("                  Please select the following options:");
 
         loadGameButton.setText("Load Game");
@@ -629,6 +648,8 @@ public class ChessFrame extends JFrame {
         Image scaledImage = image.getScaledInstance(260, 220, Image.SCALE_SMOOTH);
         JLabel imageLabel = new JLabel(new ImageIcon(scaledImage));
         jLabel16 = imageLabel;
+
+        jPanel8.setOpaque(false);
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -681,9 +702,10 @@ public class ChessFrame extends JFrame {
                 .addGap(29, 29, 29))
         );
 
-        jTabbedPane2.addTab("tab5", jPanel8);
+        jTabbedPane2.addTab("tab4", jPanel8);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Promotion:");
 
         rookButton.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -718,18 +740,13 @@ public class ChessFrame extends JFrame {
             }
         });
 
-        jButton5.setText("Back");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-
         ImageIcon icon3 = new ImageIcon("Images/Chess2.png");
         Image image3 = icon3.getImage();
         Image scaledImage3 = image3.getScaledInstance(273, 155, image3.SCALE_SMOOTH);
         JLabel imageLabel3 = new JLabel(new ImageIcon(scaledImage3));
         jLabel17 = imageLabel3;
+
+        jPanel9.setOpaque(false);
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -740,22 +757,17 @@ public class ChessFrame extends JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(32, 32, 32)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel9Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel9Layout.createSequentialGroup()
-                                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(queenButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(bishopButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(knightButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(rookButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                            .addComponent(queenButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bishopButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(knightButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(rookButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(45, 45, 45))
         );
         jPanel9Layout.setVerticalGroup(
@@ -773,13 +785,12 @@ public class ChessFrame extends JFrame {
                     .addComponent(knightButton, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
                 .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton5)
-                .addGap(45, 45, 45))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
 
-        jTabbedPane2.addTab("tab6", jPanel9);
+        jTabbedPane2.addTab("tab5", jPanel9);
 
+        loadLabel.setForeground(new java.awt.Color(255, 255, 255));
         loadLabel.setText("Load Game");
 
         gameList2.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
@@ -804,6 +815,8 @@ public class ChessFrame extends JFrame {
                 jButton7ActionPerformed(evt);
             }
         });
+
+        jPanel10.setOpaque(false);
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -838,9 +851,9 @@ public class ChessFrame extends JFrame {
                 .addGap(87, 87, 87))
         );
 
-        jTabbedPane2.addTab("tab7", jPanel10);
+        jTabbedPane2.addTab("tab6", jPanel10);
 
-        jPanel5.add(jTabbedPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 10, -1, 520));
+        jPanel5.add(jTabbedPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, -30, -1, 560));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -857,15 +870,14 @@ public class ChessFrame extends JFrame {
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel5.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 570, 240, 30));
+        jPanel5.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 10, 240, 30));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel5.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 570, 280, 30));
+        jPanel5.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 280, 30));
 
-        jLabel15.setText("Test Label");
-        jLabel15.setIcon(background);
-        jPanel5.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 640));
+        jLabel20.setIcon(flipBackground);
+        jPanel5.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 640));
 
         jTabbedPane1.addTab("tab3", jPanel5);
 
@@ -921,7 +933,10 @@ public class ChessFrame extends JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        System.out.println("load");
+        switchTab(5);
+        gameList1.setListData(setSavedGameInfo());
+        gameList2.setListData(setSavedGameInfo());
+        switchTab2(2);
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
@@ -964,19 +979,52 @@ public class ChessFrame extends JFrame {
                 Logger.getLogger(ChessFrame.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-            getjTabbedPane2().setSelectedIndex(3);
+            switchTab(2);
             displayNames();
             chessPanel.repaint();
         }
     }//GEN-LAST:event_loadGameActionPerformed
 
-    private void loadHistoryButtonActionPerformed(java.awt.event.ActionEvent evt){
-        
+    // Load history from table
+    private void loadHistoryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadHistoryButtonActionPerformed
+        if(gameList.isSelectionEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Please select a game!", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        else
+        {
+            this.boardNum = 0;
+            chessPanel.resetGame();
+            chessPanel.setGameEnded(true);
+            nextButton.setVisible(true);
+            prevButton.setVisible(true);
+            this.historyNum = gameList.getSelectedIndex()+1;
+            chessController.getGameHistoryInfo(historyNum);
+            try 
+            {
+                ResultSet resultSet = chessController.getGameHistoryInfo(historyNum);
+                if(resultSet.next())
+                {
+                    String player1Name = resultSet.getString(1);
+                    String player2Name = resultSet.getString(2);
+                    chessController.setPlayers(player1Name, player2Name);
+                }
+                prevButton.setEnabled(false);
+                nextButton.setEnabled(true);
+                if(this.boardNum + 1 > chessController.getMaxMoves()) {
+                    nextButton.setEnabled(false);
+                }
+            } 
+            catch (SQLException ex) 
+            {
+                Logger.getLogger(ChessFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            chessController.loadHistoryGameBoard(historyNum, boardNum);
+            displayNames();
+            chessPanel.repaint();
+        }
     }
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        backToMainScreen();
-    }//GEN-LAST:event_jButton5ActionPerformed
-
+    
     private void bishopButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bishopButtonActionPerformed
         chessController.promote("B");
         getjTabbedPane2().setSelectedIndex(3);
@@ -1003,7 +1051,7 @@ public class ChessFrame extends JFrame {
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         gameList.setListData(setPlayersHistory());
-        getjTabbedPane2().setSelectedIndex(1);
+        switchTab(0);
     }//GEN-LAST:event_jButton9ActionPerformed
 
     // Rematch button will reset the game but not the players. Also reset if the flag is switched because white starts first.
@@ -1013,7 +1061,7 @@ public class ChessFrame extends JFrame {
         flipToggleButton.setSelected(false);
         startButtonActionPerformed(evt);
         restartGame();
-        getjTabbedPane2().setSelectedIndex(3);
+        switchTab(2);
     }//GEN-LAST:event_rematchButtonActionPerformed
 
     // Close data base connections and then closes the program.
@@ -1024,22 +1072,22 @@ public class ChessFrame extends JFrame {
 
     // Goes back to main Screen
     private void startNewGameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startNewGameButtonActionPerformed
-
         backToMainScreen();
     }//GEN-LAST:event_startNewGameButtonActionPerformed
 
     private void loadGameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadGameButtonActionPerformed
-
+        switchTab(5);
     }//GEN-LAST:event_loadGameButtonActionPerformed
 
     private void flipToggleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_flipToggleButtonActionPerformed
-
+        getChessPanel().setToggleSwitch(flipToggleButton.isSelected());
+        getChessPanel().repaint();
     }//GEN-LAST:event_flipToggleButtonActionPerformed
 
     // Goes to the save screen
     private void SaveGameButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveGameButton2ActionPerformed
 
-        getjTabbedPane2().setSelectedIndex(2);
+        switchTab(1);
     }//GEN-LAST:event_SaveGameButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -1051,7 +1099,7 @@ public class ChessFrame extends JFrame {
         int response = JOptionPane.showConfirmDialog(null, chessController.getCurrentPlayer().getName() +", do you wish to resign?", "Resign", JOptionPane.YES_NO_OPTION);
         if(response == JOptionPane.YES_OPTION)
         {
-            getjTabbedPane2().setSelectedIndex(4);
+            switchTab(3);
             chessController.resignGame();
             JOptionPane.showMessageDialog(null, chessController.getCurrentPlayer().getName()  + " has resigned. This game has ended via resignation");
             chessController.setPlayer1(null);
@@ -1067,7 +1115,7 @@ public class ChessFrame extends JFrame {
             + " asks for a draw. " + otherPlayer.getName()  + ", do you accept the draw?", "Draw Proposal", JOptionPane.YES_NO_OPTION);
 
         if (response == JOptionPane.YES_OPTION) {
-            getjTabbedPane2().setSelectedIndex(4);
+            switchTab(3);
             chessController.drawGame();
             JOptionPane.showMessageDialog(null, "The game has ended via draw.");
             chessController.setPlayer1(null);
@@ -1146,6 +1194,12 @@ public class ChessFrame extends JFrame {
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         backToMainScreen();
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        switchTab(0);
+        gameList.setListData(setPlayersHistory());
+        switchTab2(2);
+    }//GEN-LAST:event_jButton10ActionPerformed
 
    
     // Reset the whole game, calls the getChessPanel which uses the ChessController to reset the game.
@@ -1320,7 +1374,6 @@ public class ChessFrame extends JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
@@ -1331,12 +1384,12 @@ public class ChessFrame extends JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

@@ -853,6 +853,8 @@ public class ChessFrame extends JFrame {
 
         jTabbedPane2.addTab("tab6", jPanel10);
 
+        jTabbedPane2.setOpaque(false);
+
         jPanel5.add(jTabbedPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, -30, -1, 560));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -986,7 +988,7 @@ public class ChessFrame extends JFrame {
     }//GEN-LAST:event_loadGameActionPerformed
 
     // Load history from table
-    private void loadHistoryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadHistoryButtonActionPerformed
+    private void loadHistoryButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                  
         if(gameList.isSelectionEmpty())
         {
             JOptionPane.showMessageDialog(this, "Please select a game!", "Error", JOptionPane.ERROR_MESSAGE);

@@ -135,19 +135,19 @@ public class ChessPanel extends JPanel {
         if(chessController.gameEnded())
         {
             setGameEnded(true);
-            chessFrame.switchTab(2);
+            chessFrame.switchTab(3);
             repaint();
             JOptionPane.showMessageDialog(ChessPanel.this, "This Chess Game has ended via Checkmate! Game over.");
         }
         checkForPromotion();
-        if(chessController.getCurrentColourTurn() == PieceColour.BLACK)
-        {
-            int[] moves = chessController.getBotMove();
-            System.out.println(moves[0] + moves[1]);
+//        if(chessController.getCurrentColourTurn() == PieceColour.BLACK)
+//        {
+//            int[] moves = chessController.getBotMove();
+//            System.out.println(moves[0] + moves[1]);
 //            selectedCol = moves[0];
 //            selectedRow = moves[1];
 //            chessController.movePiece(selectedCol, selectedRow, moves[2], moves[3]);
-        }
+//        }
     }
     
     // Update moves to a TextArea in the frame.
@@ -174,6 +174,7 @@ public class ChessPanel extends JPanel {
     {
         if(chessController.canPromote())
         {
+            gameEnded = true;
             chessFrame.switchTab(4);
             return true;
         }

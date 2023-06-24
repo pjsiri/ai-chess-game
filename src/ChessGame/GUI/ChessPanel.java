@@ -6,6 +6,7 @@ package ChessGame.GUI;
 
 import ChessGame.ChessController;
 import ChessGame.Piece.Piece;
+import ChessGame.Piece.PieceColour;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -134,11 +135,19 @@ public class ChessPanel extends JPanel {
         if(chessController.gameEnded())
         {
             setGameEnded(true);
-            chessFrame.switchTab(3);
+            chessFrame.switchTab(2);
             repaint();
             JOptionPane.showMessageDialog(ChessPanel.this, "This Chess Game has ended via Checkmate! Game over.");
         }
         checkForPromotion();
+        if(chessController.getCurrentColourTurn() == PieceColour.BLACK)
+        {
+            int[] moves = chessController.getBotMove();
+            System.out.println(moves[0] + moves[1]);
+//            selectedCol = moves[0];
+//            selectedRow = moves[1];
+//            chessController.movePiece(selectedCol, selectedRow, moves[2], moves[3]);
+        }
     }
     
     // Update moves to a TextArea in the frame.
@@ -165,7 +174,7 @@ public class ChessPanel extends JPanel {
     {
         if(chessController.canPromote())
         {
-            chessFrame.switchTab(5);
+            chessFrame.switchTab(4);
             return true;
         }
         return false;

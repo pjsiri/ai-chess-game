@@ -134,7 +134,7 @@ public class ChessPanel extends JPanel {
         if(chessController.gameEnded())
         {
             setGameEnded(true);
-            chessFrame.switchTab(4);
+            chessFrame.switchTab(3);
             repaint();
             JOptionPane.showMessageDialog(ChessPanel.this, "This Chess Game has ended via Checkmate! Game over.");
         }
@@ -184,16 +184,12 @@ public class ChessPanel extends JPanel {
         int boardHeight = BOARD_SIZE * CELL_SIZE;
 
         // Draw the frame around the chess board
-        g.setColor(Color.BLACK);
+        g.setColor(Color.DARK_GRAY);
         g.fillRect(CELL_SIZE - frameWidth - 59, CELL_SIZE - frameWidth - 58, frameWidth, boardHeight + 2 * frameWidth); // LEFT
         g.fillRect(CELL_SIZE - frameWidth - 59, CELL_SIZE - frameWidth - 58, boardWidth + 2 * frameWidth, frameWidth); // TOP
         g.fillRect(CELL_SIZE - frameWidth - 59, CELL_SIZE + boardHeight  - 58, boardWidth + 2 * frameWidth, frameWidth);
         g.fillRect(CELL_SIZE + boardWidth - 59, CELL_SIZE - frameWidth - 58, frameWidth, boardHeight + 2 * frameWidth);
-        if(chessController.getPlayer1() == null || chessController.getPlayer2() == null) // Check if player has logged in
-        {
-            g.setColor(new Color(0, 0, 0, 100));
-            g.fillRect(CELL_SIZE - 59, CELL_SIZE - 58, BOARD_SIZE * CELL_SIZE, BOARD_SIZE * CELL_SIZE);
-        }
+        
         
         // If there are available moves, the program will draw them to the GUI
         if(availableMoves != null)

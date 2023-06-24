@@ -34,13 +34,14 @@ public class ChessFrame extends JFrame {
     private ChessController chessController;
     private int historyNum;
     private int boardNum;
+    private final ImageIcon background;
     
     public ChessFrame() 
     {
         chessPanel = new ChessPanel(this);
         setTitle("Chess Game");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+        background = new ImageIcon("Images/background3.png");
         initComponents();
         pack();
         setLocationRelativeTo(null); // Center the frame on the screen
@@ -65,6 +66,8 @@ public class ChessFrame extends JFrame {
         jButton12 = new javax.swing.JButton();
         jButton13 = new javax.swing.JButton();
         jLabel20 = new javax.swing.JLabel();
+        jPanel12 = new javax.swing.JPanel();
+        jButton14 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -193,6 +196,17 @@ public class ChessFrame extends JFrame {
                 jButton8ActionPerformed(evt);
             }
         });
+        jButton8.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent evt) {
+                jButton8.setForeground(Color.GRAY);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent evt) {
+                jButton8.setForeground(Color.WHITE);
+            }
+        });
         jPanel11.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 143, 35));
 
         jButton10.setForeground(new java.awt.Color(255, 255, 255));
@@ -200,6 +214,17 @@ public class ChessFrame extends JFrame {
         jButton10.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton10.setBorder(null);
         jButton10.setContentAreaFilled(false);
+        jButton10.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent evt) {
+                jButton10.setForeground(Color.GRAY);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent evt) {
+                jButton10.setForeground(Color.WHITE);
+            }
+        });
         jPanel11.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 140, 143, 35));
 
         jButton12.setForeground(new java.awt.Color(255, 255, 255));
@@ -207,6 +232,17 @@ public class ChessFrame extends JFrame {
         jButton12.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton12.setBorder(null);
         jButton12.setContentAreaFilled(false);
+        jButton12.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent evt) {
+                jButton12.setForeground(Color.GRAY);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent evt) {
+                jButton12.setForeground(Color.WHITE);
+            }
+        });
         jPanel11.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 143, 35));
 
         jButton13.setForeground(new java.awt.Color(255, 255, 255));
@@ -214,15 +250,38 @@ public class ChessFrame extends JFrame {
         jButton13.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton13.setBorder(null);
         jButton13.setContentAreaFilled(false);
+        jButton13.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent evt) {
+                jButton13.setForeground(Color.GRAY);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent evt) {
+                jButton13.setForeground(Color.WHITE);
+            }
+        });
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton13ActionPerformed(evt);
+            }
+        });
         jPanel11.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 140, 143, 35));
 
         jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        ImageIcon background = new ImageIcon("Images/background3.png");
+        //ImageIcon background = new ImageIcon("Images/background3.png");
         jLabel20.setIcon(background);
-        jLabel20.setText("jLabel20");
+        jLabel20.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel11.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 600));
 
         jTabbedPane1.addTab("tab1", jPanel11);
+
+        jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton14.setText("jButton14");
+        jPanel12.add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 150, -1, -1));
+
+        jTabbedPane1.addTab("tab2", jPanel12);
 
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -301,7 +360,7 @@ public class ChessFrame extends JFrame {
         jLabel15 = imageLabel2;
         jPanel4.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, 99, 333, 139));
 
-        jTabbedPane1.addTab("tab2", jPanel4);
+        jTabbedPane1.addTab("tab3", jPanel4);
 
         jPanel5.setBackground(new java.awt.Color(102, 102, 102));
 
@@ -822,7 +881,7 @@ public class ChessFrame extends JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("tab3", jPanel5);
+        jTabbedPane1.addTab("tab4", jPanel5);
 
         getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 630));
 
@@ -1139,6 +1198,11 @@ public class ChessFrame extends JFrame {
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         System.out.println("load");
     }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+        System.out.println("Thank you for playing! :)");
+        System.exit(0);
+    }//GEN-LAST:event_jButton13ActionPerformed
     
     // Reset the whole game, calls the getChessPanel which uses the ChessController to reset the game.
     private void restartGame()
@@ -1309,6 +1373,7 @@ public class ChessFrame extends JFrame {
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
+    private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -1339,6 +1404,7 @@ public class ChessFrame extends JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;

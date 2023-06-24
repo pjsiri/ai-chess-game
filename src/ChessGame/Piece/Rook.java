@@ -18,13 +18,13 @@ public class Rook extends Piece {
     
     public Rook(PieceColour colour,int col, int row, PiecesOnBoard board)
     {
-        super(colour, col, row);
+        super(colour, col, row, 5);
         this.board = board;
     }
     
     public Rook(PieceColour colour, int col, int row, int LMN, boolean HNM, boolean HMO, PiecesOnBoard board)
     {
-        super(colour, col, row, LMN, HNM, HMO);
+        super(colour, col, row, LMN, HNM, HMO, 5);
         this.board = board;
     }
     

@@ -61,6 +61,24 @@ public class AllPieces {
         pieces.add(new Pawn(PieceColour.BLACK, 7, 6, board));
     }
     
+    public int getOverallEvaluation()
+    {
+        return getColourPoints(PieceColour.WHITE) - getColourPoints(PieceColour.BLACK);
+    }
+    
+    private int getColourPoints(PieceColour colour)
+    {
+        int totalPoints = 0;
+        for(Piece i : pieces)
+        {
+            if(i.getColour() == colour)
+            {
+                totalPoints += i.getPointValue();
+            }
+        }
+        return totalPoints;
+    }
+    
     //return a list of white pieces
     public ArrayList<Piece> getAllPieces()
     {

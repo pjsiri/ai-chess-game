@@ -17,29 +17,32 @@ public abstract class Piece {
     private int row;
     private int column;
     private PieceColour colour;
+    private final int pointValue;
+    private int lastmoveNum;
     private boolean hasNotMoved;
     private boolean hasMovedOnce;
-    private int lastmoveNum;
     private boolean isUnderPin;
     private boolean[][] pinPath = new boolean[8][8];
     
     //a piece constructor
-    public Piece(PieceColour colour, int col, int row)
+    public Piece(PieceColour colour, int col, int row, int points)
     {
         this.colour = colour;
         this.column = col;
         this.row = row;
+        this.pointValue = points;
         this.lastmoveNum = 0;
         this.hasNotMoved = true;
         this.hasMovedOnce = false;
     }
     
     //a piece constructor
-    public Piece(PieceColour colour, int col, int row, int LMN, boolean HNM, boolean HMO)
+    public Piece(PieceColour colour, int col, int row, int LMN, boolean HNM, boolean HMO, int points)
     {
         this.colour = colour;
         this.column = col;
         this.row = row;
+        this.pointValue = points;
         this.lastmoveNum = LMN;
         this.hasNotMoved = HNM;
         this.hasMovedOnce = HMO;
@@ -53,16 +56,21 @@ public abstract class Piece {
         return icon.getImage();
     }
     
+    public int getPointValue()
+    {
+        return pointValue;
+    }
+    
     //return piece's column
     public int getColumn()
     {
-        return this.column;
+        return column;
     }
     
     //return piece's row
     public int getRow()
     {
-        return this.row;
+        return row;
     }
     
     //set piece's column and row
@@ -81,7 +89,7 @@ public abstract class Piece {
     //return the opposite colour of the piece
     public PieceColour getOppColour()
     {
-        return this.colour.getOppColour();
+        return colour.getOppColour();
     }
     
     //return the piece's symbol
@@ -90,7 +98,7 @@ public abstract class Piece {
     //return the last move number of the piece
     public int getLastMoveNum()
     {
-        return this.lastmoveNum;
+        return lastmoveNum;
     }
     
     public void setLastMoveNum(int LMN)
@@ -103,31 +111,31 @@ public abstract class Piece {
     {
         if(hasNotMoved)
         {
-            this.hasMovedOnce = true;
+            hasMovedOnce = true;
         }
         else
         {
-            this.hasMovedOnce = false;
+            hasMovedOnce = false;
         }
-        this.hasNotMoved = false;
+        hasNotMoved = false;
     }
     
     //return true if the piece has not moved yet
     public boolean hasNotMoved()
     {
-        return this.hasNotMoved;
+        return hasNotMoved;
     }
     
     //return true if the piece only moved once
     public boolean hasMovedOnce()
     {
-        return this.hasMovedOnce;
+        return hasMovedOnce;
     }
     
     //return the path of pin area on the board
     public boolean[][] getPinPath()
     {
-        return this.pinPath;
+        return pinPath;
     }
     
     //set the pin path to the piece
@@ -145,7 +153,7 @@ public abstract class Piece {
     //return true is the piece is under pin, else false
     public boolean isUnderPin()
     {
-        return this.isUnderPin;
+        return isUnderPin;
     }
     
     //return the available moves of the piece

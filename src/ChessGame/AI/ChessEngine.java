@@ -19,9 +19,11 @@ public class ChessEngine {
     
     private ChessController chessController = new ChessController();
     private int fromCol, fromRow, toCol, toRow;
+    private int engineLayer;
     
     public int[] getBotMove(PieceColour botColour, int engineLayer)
     {
+        this.engineLayer = engineLayer;
         PiecesOnBoard board = new PiecesOnBoard(chessController.getBoard());
         minimax(board, botColour, engineLayer, Integer.MIN_VALUE, Integer.MAX_VALUE);
         return getBotMove();
@@ -30,7 +32,7 @@ public class ChessEngine {
     //minimax function
     private int minimax(PiecesOnBoard board, PieceColour colour, int layer, int alpha, int beta)
     {
-        if (layer == 0 || gameEnded(board, colour))
+        if (layer <= 0 || gameEnded(board, colour))
         {
             return board.getPieces().getOverallEvaluation();
         }
@@ -49,9 +51,9 @@ public class ChessEngine {
                         {
                             PiecesOnBoard newBoard = new PiecesOnBoard(board);
                             newBoard.movePiece(i.getColumn(), i.getRow(), col, row);
-                            int pointValue = minimax(newBoard, colour.getOppColour(), layer, alpha, beta);
+                            int pointValue = minimax(newBoard, colour.getOppColour(), layer-1, alpha, beta);
                             maxPointValue = max(maxPointValue, pointValue);
-                            if (maxPointValue == pointValue) {
+                            if (this.engineLayer == layer && maxPointValue == pointValue) {
                                 setMovement(i.getColumn(), i.getRow(), col, row);
                             }
                             alpha = max(alpha, pointValue);
@@ -81,6 +83,9 @@ public class ChessEngine {
                             newBoard.movePiece(i.getColumn(), i.getRow(), col, row);
                             int pointValue = minimax(newBoard, colour.getOppColour(), layer-1, alpha, beta);
                             minPointValue = min(minPointValue, pointValue);
+                            if (this.engineLayer == layer && minPointValue == pointValue) {
+                                setMovement(i.getColumn(), i.getRow(), col, row);
+                            }
                             beta = min(beta, pointValue);
                             if (beta <= alpha) {
                                 break outerloop;

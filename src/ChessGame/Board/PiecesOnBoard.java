@@ -17,8 +17,8 @@ import ChessGame.Piece.Rook;
  */
 public final class PiecesOnBoard {
    
-    private final Piece[][] board = new Piece[8][8]; // [column][row]
-    private final boolean[][] checkPath = new boolean[8][8]; // [column][row]
+    private Piece[][] board = new Piece[8][8]; // [column][row]
+    private boolean[][] checkPath = new boolean[8][8]; // [column][row]
     private AllPieces allPieces;
     private boolean whiteIsInCheck = false;
     private boolean blackIsInCheck = false;
@@ -30,6 +30,19 @@ public final class PiecesOnBoard {
     public PiecesOnBoard()
     {
         allPieces = new AllPieces(this);
+        refreshBoard();
+    }
+    
+    public PiecesOnBoard(PiecesOnBoard board)
+    {
+        this.board = board.getBoard();
+        this.checkPath = board.getCheckPath();
+        this.allPieces = board.getPieces();
+        this.whiteIsInCheck = board.isInCheck(PieceColour.WHITE);
+        this.blackIsInCheck = board.isInCheck(PieceColour.BLACK);
+        this.isPromoting = board.canPromote();
+        this.promotionPawn = board.promotionPawn;
+        this.moveNum = board.getMoveNum();
         refreshBoard();
     }
     

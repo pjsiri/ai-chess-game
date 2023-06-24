@@ -97,7 +97,7 @@ public class ChessPanel extends JPanel {
     // Select piece if the piece isn't empty and if it is the same piece colour as the player playing.
     public void selectPiece(int col, int row) 
     {
-        selectedPiece = chessController.getBoard()[col][row];
+        selectedPiece = chessController.getBoardPosition()[col][row];
 
         if (getSelectedPiece() != null) // Check for Empty piece
         {
@@ -117,7 +117,7 @@ public class ChessPanel extends JPanel {
     // Move piece if it is a legal move and if it a availableMoves. It uses the chessController to move the piece.
     private void movePiece(int col, int row) 
     {
-        selectedPiece = chessController.getBoard()[getSelectedCol()][getSelectedRow()];
+        selectedPiece = chessController.getBoardPosition()[getSelectedCol()][getSelectedRow()];
 
         if (availableMoves[col][row]) // Check the availableMoves 
         {
@@ -223,7 +223,7 @@ public class ChessPanel extends JPanel {
                     currentCol = 7 - col;
                 }
                 
-                Piece piece = chessController.getBoard()[currentCol][currentRow];
+                Piece piece = chessController.getBoardPosition()[currentCol][currentRow];
 
                 if ((row + col) % 2 == 0) 
                 {

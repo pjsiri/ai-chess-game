@@ -20,6 +20,12 @@ public class Player {
         this.playerName = playerName;
         this.colourPiece = colourPiece;
     }
+    
+    public Player(PieceColour colourPiece)
+    {
+        this.playerName = "Bot";
+        this.colourPiece = colourPiece;
+    }
 
     public PieceColour getColourPiece() 
     {

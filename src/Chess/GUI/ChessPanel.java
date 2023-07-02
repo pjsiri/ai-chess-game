@@ -173,7 +173,7 @@ public class ChessPanel extends JPanel {
             return;
         }
         
-        if (singlePlayer) 
+        if(singlePlayer || chessController.getGameMode() != 0) 
         {
             gameEnded = true;
             SwingWorker<Void, Void> aiMoveWorker = new SwingWorker<Void, Void>() 

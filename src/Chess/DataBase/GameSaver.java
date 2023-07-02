@@ -25,7 +25,7 @@ public final class GameSaver extends GameDB {
     
     public void createTable()
     {
-        String createStatement = "CREATE TABLE GAME_SAVER (NUMBER INT, WHITE VARCHAR(20), BLACK VARCHAR(20), DATE DATE)";
+        String createStatement = "CREATE TABLE GAME_SAVER (NUMBER INT, WHITE VARCHAR(20), BLACK VARCHAR(20), DATE DATE, GAMEMODE INT)";
         
         try {
             // Check if the table already exists
@@ -41,9 +41,9 @@ public final class GameSaver extends GameDB {
         }
     }
     
-    public void saveGame(int slotNum, String playerWhite, String playerBlack, Date date)
+    public void saveGame(int slotNum, String playerWhite, String playerBlack, Date date, int GAMEMODE)
     {
-        String updateStatement = "UPDATE GAME_SAVER SET WHITE = '" + playerWhite + "', BLACK = '" + playerBlack + "', DATE = '" + date + "' WHERE NUMBER = " + slotNum;
+        String updateStatement = "UPDATE GAME_SAVER SET WHITE = '" + playerWhite + "', BLACK = '" + playerBlack + "', DATE = '" + date + "', GAMEMODE = "+ GAMEMODE +" WHERE NUMBER = " + slotNum;
         
         try {
             Statement statement = getConn().createStatement();
@@ -53,7 +53,7 @@ public final class GameSaver extends GameDB {
             if (rowsAffected == 0)
             {
                 // If no rows were affected by the update, insert a new row
-                String insertStatement = "INSERT INTO GAME_SAVER VALUES (" + slotNum + ", '" + playerWhite + "', '" + playerBlack + "', '" + date + "')";
+                String insertStatement = "INSERT INTO GAME_SAVER VALUES (" + slotNum + ", '" + playerWhite + "', '" + playerBlack + "', '" + date + "', " + GAMEMODE +")";
                 statement.executeUpdate(insertStatement);
                 statement.close();
             }
@@ -66,7 +66,7 @@ public final class GameSaver extends GameDB {
     public ResultSet getSavedGameInfo(int slotNum)
     {
         ResultSet resultSet = null;
-        String queryStatement = "SELECT WHITE, BLACK, DATE FROM GAME_SAVER WHERE NUMBER = " + slotNum;
+        String queryStatement = "SELECT WHITE, BLACK, DATE, GAMEMODE FROM GAME_SAVER WHERE NUMBER = " + slotNum;
         
         try {
             Statement statement = getConn().createStatement();

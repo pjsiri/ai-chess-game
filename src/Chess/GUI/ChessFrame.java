@@ -1030,6 +1030,12 @@ public class ChessFrame extends JFrame {
                 {
                     String player1Name = resultSet.getString(1);
                     String player2Name = resultSet.getString(2);
+                    
+                    if(resultSet.getInt(4) != 0)
+                    {
+                        System.out.println("Single player.");
+                        chessPanel.setSinglePlayer(true);
+                    }
                     chessController.setPlayers(player1Name, player2Name);
                 }
             }
@@ -1275,6 +1281,7 @@ public class ChessFrame extends JFrame {
             chessPanel.setSinglePlayer(true);
             switchTab2(2);
             chessController.setPlayers(PieceColour.WHITE, player1Name);
+            //chessController.setGameMode(1);
             switchTab(2);
             displayNames();
             jTextPane1.setText(player1Name);
@@ -1297,6 +1304,7 @@ public class ChessFrame extends JFrame {
             chessPanel.setSinglePlayer(true);
             switchTab2(2);
             chessController.setPlayers(PieceColour.WHITE, player1Name);
+            //chessController.setGameMode(1);
             switchTab(2);
             displayNames();
             jTextPane1.setText(player1Name);

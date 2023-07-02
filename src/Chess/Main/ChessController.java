@@ -39,6 +39,7 @@ public class ChessController {
     private static GameSaverRecorder gameSRecorder;
     private static GameHistory gameHistory;
     private static GameHistoryRecorder gameHRecorder;
+    private static int gameMode;
     private static int maxMoves;
     
     public ChessController()
@@ -49,6 +50,7 @@ public class ChessController {
         gameHistory = new GameHistory();
         gameHRecorder = new GameHistoryRecorder();
         engine = new Engine(this);
+        gameMode = 0;
     }
     
     public int movePiece(int fromSquare, int toSquare)
@@ -94,7 +96,7 @@ public class ChessController {
      */
     public void saveGame(int slotNum)
     {
-        gameSaver.saveGame(slotNum, playerWhite.getName(), playerBlack.getName(), getCurrentDate());
+        gameSaver.saveGame(slotNum, playerWhite.getName(), playerBlack.getName(), getCurrentDate(),gameMode);
         gameSRecorder.saveCurrentGame(slotNum);
     }
     
@@ -206,11 +208,18 @@ public class ChessController {
         for(Piece i : board.getPieces().getAllPieces(board.getColourTurn()))
         {
             int HNM = 0;
+            if(!i.isMoved()) 
+            {
+                HNM = 1;
+            }
+            gameSRecorder.recordCurrentGame(board.getMoveNum(), i.getSymbol(), i.getPosition(), HNM, board.getEnPassantTarget());
+        }
+        for(Piece i : board.getPieces().getAllPieces(board.getColourTurn().getOppColour()))
+        {
+            int HNM = 0;
             if(!i.isMoved()) {
                 HNM = 1;
             }
-            
-                
             gameSRecorder.recordCurrentGame(board.getMoveNum(), i.getSymbol(), i.getPosition(), HNM, board.getEnPassantTarget());
         }
     }
@@ -384,5 +393,19 @@ public class ChessController {
      */
     public void setMaxMoves(int aMaxMoves) {
         maxMoves = aMaxMoves;
+    }
+
+    /**
+     * @return the gameMode
+     */
+    public int getGameMode() {
+        return gameMode;
+    }
+
+    /**
+     * @param aGameMode the gameMode to set
+     */
+    public void setGameMode(int aGameMode) {
+        gameMode = aGameMode;
     }
 }

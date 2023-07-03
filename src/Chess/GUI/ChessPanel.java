@@ -431,6 +431,8 @@ public class ChessPanel extends JPanel {
         wasAtPos = -1;
         movedToPos = -1;
         resetSelection();
+        toggleSwitch = false;
+        flipFlag = false;
         chessController.startNewGame();
         setGameEnded(false);
         repaint();

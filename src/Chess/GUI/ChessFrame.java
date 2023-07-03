@@ -1349,6 +1349,7 @@ public class ChessFrame extends JFrame {
     {
         jTextPane1.setText("");
         jTextPane2.setText("");
+        flipToggleButton.setSelected(false);
         restartGame();
         jLabel3.setVisible(false);
         jLabel9.setVisible(false);

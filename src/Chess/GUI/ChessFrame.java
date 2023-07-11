@@ -999,6 +999,7 @@ public class ChessFrame extends JFrame {
         gameList1.setListData(setSavedGameInfo());
         gameList.setListData(setPlayersHistory());
         gameList2.setListData(setSavedGameInfo());
+        flipToggleButton.setVisible(true);
         jTextPane1.setText(player1Name);
         jTextPane2.setText(player2Name);
         chessController.setGameMode(1);
@@ -1021,6 +1022,7 @@ public class ChessFrame extends JFrame {
             JOptionPane.showMessageDialog(this, "Please enter both names.", "Error", JOptionPane.ERROR_MESSAGE);
         } else
         {
+            flipToggleButton.setVisible(true);
             chessPanel.setSinglePlayer(false);
             chessController.setGameMode(1);
             switchTab2(2);
@@ -1329,6 +1331,7 @@ public class ChessFrame extends JFrame {
             JOptionPane.showMessageDialog(this, "Please enter your name.", "Error", JOptionPane.ERROR_MESSAGE);
         } else
         {
+            flipToggleButton.setVisible(false);
             chessPanel.setSinglePlayer(true);
             switchTab2(2);
             chessController.setPlayers(PieceColour.WHITE, player1Name);
@@ -1352,6 +1355,7 @@ public class ChessFrame extends JFrame {
             JOptionPane.showMessageDialog(this, "Please enter your name.", "Error", JOptionPane.ERROR_MESSAGE);
         } else
         {
+            flipToggleButton.setVisible(false);
             chessPanel.setSinglePlayer(true);
             switchTab2(2);
             chessController.setPlayers(PieceColour.WHITE, player1Name);

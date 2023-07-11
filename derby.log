@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
-Sun Jul 02 18:45:16 NZST 2023:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0189-1559-39af-00000e623970 
+Tue Jul 11 21:31:22 NZST 2023:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0189-444a-870d-00000e6236d8 
 on database directory C:\Users\User\Documents\NetBeansJDKs\AI-Chess-Game\AIChessDB with class loader sun.misc.Launcher$AppClassLoader@55f96302 
 Loaded from file:/C:/Users/User/Documents/NetBeansJDKs/AI-Chess-Game/lib/derby.jar
 java.vendor=Oracle Corporation

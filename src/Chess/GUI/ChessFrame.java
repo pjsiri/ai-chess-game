@@ -150,6 +150,16 @@ public class ChessFrame extends JFrame {
         guestLogin2 = new javax.swing.JButton();
         jLabel25 = new javax.swing.JLabel();
         jPanel13 = new javax.swing.JPanel();
+        jButton11 = new javax.swing.JButton();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
+        jLabel30 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -601,14 +611,14 @@ public class ChessFrame extends JFrame {
             }
         });
 
-        startNewGameButton.setText("Start new game");
+        startNewGameButton.setText("Back to Main");
         startNewGameButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 startNewGameButtonActionPerformed(evt);
             }
         });
 
-        forceQuitButton.setText("Quit");
+        forceQuitButton.setText("Exit");
         forceQuitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 forceQuitButtonActionPerformed(evt);
@@ -654,8 +664,8 @@ public class ChessFrame extends JFrame {
                             .addComponent(rematchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(28, 28, 28)
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(startNewGameButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(forceQuitButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(startNewGameButton, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
+                            .addComponent(forceQuitButton, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE))
                         .addGap(46, 46, 46))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                         .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -924,16 +934,53 @@ public class ChessFrame extends JFrame {
 
         jTabbedPane1.addTab("tab4", jPanel12);
 
-        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
-        jPanel13.setLayout(jPanel13Layout);
-        jPanel13Layout.setHorizontalGroup(
-            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 960, Short.MAX_VALUE)
-        );
-        jPanel13Layout.setVerticalGroup(
-            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 640, Short.MAX_VALUE)
-        );
+        jPanel13.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton11.setText("Back");
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
+        jPanel13.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(52, 558, 103, 30));
+
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel15.setText("This game was developed by Prom Jack Sirisukha and Feng-Min Hu. We hope you enjoy our AI chess game. :)");
+        jPanel13.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, 631, 33));
+
+        jLabel27.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel27.setText("Feng-Min Hu:");
+        jPanel13.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 100, 90, 30));
+
+        jLabel28.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel28.setText("Prom Jack Sirisukha:");
+        jPanel13.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 140, 30));
+
+        jLabel29.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel29.setText("Our Contact Details:");
+        jPanel13.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, 130, 20));
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jTextArea1.setText("Email: rh20020421@gmail.com\nGitHub: https://github.com/Rhuyk\nWebsite: https://fengminhu.com/");
+        jTextArea1.setEditable(false);
+        jScrollPane5.setViewportView(jTextArea1);
+
+        jPanel13.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 140, -1, -1));
+
+        jTextArea2.setColumns(20);
+        jTextArea2.setRows(5);
+        jTextArea2.setText("Email: pj.sirisukha.nz@gmail.com\nGitHub: https://github.com/pjsiri\nWebsite: https://pjsirisukha.com/");
+        jTextArea2.setEditable(false);
+        jScrollPane6.setViewportView(jTextArea2);
+
+        jPanel13.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, -1, -1));
+
+        jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel30.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabel30.setIcon(background);
+        jPanel13.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 640));
 
         jTabbedPane1.addTab("tab5", jPanel13);
 
@@ -954,6 +1001,7 @@ public class ChessFrame extends JFrame {
         gameList2.setListData(setSavedGameInfo());
         jTextPane1.setText(player1Name);
         jTextPane2.setText(player2Name);
+        chessController.setGameMode(1);
         chessController.setPlayers(player1Name, player2Name);
         switchTab2(2);
         switchTab(2);
@@ -974,6 +1022,7 @@ public class ChessFrame extends JFrame {
         } else
         {
             chessPanel.setSinglePlayer(false);
+            chessController.setGameMode(1);
             switchTab2(2);
             chessController.setPlayers(player1Name, player2Name);
             getjTabbedPane2().setSelectedIndex(2);
@@ -1031,11 +1080,11 @@ public class ChessFrame extends JFrame {
                     String player1Name = resultSet.getString(1);
                     String player2Name = resultSet.getString(2);
                     
-                    if(resultSet.getInt(4) != 0)
+                    if(resultSet.getInt(4) == 0)
                     {
-                        System.out.println("Single player.");
                         chessPanel.setSinglePlayer(true);
                     }
+                    
                     chessController.setPlayers(player1Name, player2Name);
                 }
             }
@@ -1148,6 +1197,7 @@ public class ChessFrame extends JFrame {
     }//GEN-LAST:event_startNewGameButtonActionPerformed
 
     private void loadGameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadGameButtonActionPerformed
+        gameList2.setListData(setSavedGameInfo());
         switchTab(5);
     }//GEN-LAST:event_loadGameButtonActionPerformed
 
@@ -1158,7 +1208,7 @@ public class ChessFrame extends JFrame {
 
     // Goes to the save screen
     private void SaveGameButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveGameButton2ActionPerformed
-
+        updateGameList();
         switchTab(1);
     }//GEN-LAST:event_SaveGameButton2ActionPerformed
 
@@ -1211,18 +1261,19 @@ public class ChessFrame extends JFrame {
     private void saveGameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveGameButtonActionPerformed
         if(gameList1.isSelectionEmpty())
         {
-            JOptionPane.showMessageDialog(this, "Please select a game!", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Please select a game slot!", "Error", JOptionPane.ERROR_MESSAGE);
         }
         else
         {
             int selectedGameIndex = gameList1.getSelectedIndex();
             ++selectedGameIndex;
+            
             chessController.saveGame(selectedGameIndex);
 
             gameList1.setListData(setSavedGameInfo());
             gameList.setListData(setPlayersHistory());
             gameList2.setListData(setSavedGameInfo());
-            getjTabbedPane2().setSelectedIndex(3);
+            getjTabbedPane2().setSelectedIndex(2);
         }
     }//GEN-LAST:event_saveGameButtonActionPerformed
 
@@ -1281,7 +1332,7 @@ public class ChessFrame extends JFrame {
             chessPanel.setSinglePlayer(true);
             switchTab2(2);
             chessController.setPlayers(PieceColour.WHITE, player1Name);
-            //chessController.setGameMode(1);
+            chessController.setGameMode(0);
             switchTab(2);
             displayNames();
             jTextPane1.setText(player1Name);
@@ -1304,7 +1355,7 @@ public class ChessFrame extends JFrame {
             chessPanel.setSinglePlayer(true);
             switchTab2(2);
             chessController.setPlayers(PieceColour.WHITE, player1Name);
-            //chessController.setGameMode(1);
+            chessController.setGameMode(0);
             switchTab(2);
             displayNames();
             jTextPane1.setText(player1Name);
@@ -1315,8 +1366,12 @@ public class ChessFrame extends JFrame {
     }//GEN-LAST:event_startButton1ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        // TODO add your handling code here:
+        switchTab2(4);
     }//GEN-LAST:event_jButton12ActionPerformed
+
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        backToMainScreen();
+    }//GEN-LAST:event_jButton11ActionPerformed
 
    
     // Reset the whole game, calls the getChessPanel which uses the ChessController to reset the game.
@@ -1345,6 +1400,13 @@ public class ChessFrame extends JFrame {
         getMoveTextArea().setFont(new Font(Font.SANS_SERIF,Font.BOLD,17));
     }
     
+    private void updateGameList()
+    {
+        gameList1.setListData(setSavedGameInfo());
+        gameList.setListData(setPlayersHistory());
+        gameList2.setListData(setSavedGameInfo());
+    }
+    
     private void backToMainScreen()
     {
         jTextPane1.setText("");
@@ -1354,6 +1416,7 @@ public class ChessFrame extends JFrame {
         jLabel3.setVisible(false);
         jLabel9.setVisible(false);
         chessController.resetPlayers();
+        updateGameList();
         switchTab2(0);
     }
     
@@ -1486,6 +1549,7 @@ public class ChessFrame extends JFrame {
     private javax.swing.JButton guestLogin2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton2;
@@ -1502,6 +1566,7 @@ public class ChessFrame extends JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
@@ -1513,7 +1578,11 @@ public class ChessFrame extends JFrame {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1537,11 +1606,15 @@ public class ChessFrame extends JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextPane jTextPane1;
     private javax.swing.JTextPane jTextPane2;
     private javax.swing.JTextPane jTextPane3;

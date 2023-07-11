@@ -92,6 +92,9 @@ public class ChessController {
     /**
      * Saves current game into a slot in the database
      * 
+     * game mode = 0 is single player
+     * game mode = 1 is multi player
+     * 
      * @param slotNum (1, 2, 3, 4, 5)
      */
     public void saveGame(int slotNum)

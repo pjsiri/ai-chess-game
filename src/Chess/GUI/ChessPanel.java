@@ -25,6 +25,13 @@ import javax.swing.SwingWorker;
  */
 public class ChessPanel extends JPanel {
 
+    /**
+     * @return the singlePlayer
+     */
+    public boolean isSinglePlayer() {
+        return singlePlayer;
+    }
+
     private static final int BOARD_SIZE = 8;
     private static final int CELL_SIZE = 63;
     
@@ -173,7 +180,7 @@ public class ChessPanel extends JPanel {
             return;
         }
         
-        if(singlePlayer || chessController.getGameMode() != 0) 
+        if(isSinglePlayer()) 
         {
             gameEnded = true;
             SwingWorker<Void, Void> aiMoveWorker = new SwingWorker<Void, Void>() 

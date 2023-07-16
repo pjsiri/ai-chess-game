@@ -1,9 +1,9 @@
 
+![image](https://github.com/pjsiri/AI-Chess-Game/assets/104670311/2d15976f-5bc4-4f5c-9520-f05b373e2cc8)
+
 # AI Chess Game
 
-Our Java AI chess program offers an immersive chess-playing experience, utilizing the minimax algorithm with alpha-beta pruning. Whether you prefer challenging the AI or playing against a friend, our program supports both single-player and two-player modes. Additionally, you can conveniently save and load previous games using the embedded database, allowing you to review historic moves and continue your chess journey at your own pace. Designed to cater to chess enthusiasts of all skill levels, our program promises an engaging and enjoyable chess experience.
-
-
+Our Java AI chess program, developed with Netbeans 17 and Java 8, builds upon our previous [2-player GUI chess game](https://github.com/Rhuyk/COMP603-Project-2-Chess) by incorporating an AI mode. Using the minimax algorithm with alpha-beta pruning, our program offers an immersive chess-playing experience. Whether you enjoy challenging the AI or playing against a friend, our program supports both single-player and two-player modes. Furthermore, you can conveniently save and load previous games using the embedded database, enabling you to review historic moves and continue your chess journey at your own pace.
 ## Authors
 
 - [@pjsiri](https://github.com/pjsiri)
@@ -16,31 +16,28 @@ Our Java AI chess program offers an immersive chess-playing experience, utilizin
 - Includes an embedded database for saving and loading previous games.
 - Allows viewing historic moves from finished games using embedded database.
 - Offers a single-player mode and two-player mode
-- Option for auto-flip mechanic for two-player mode
 - Options for resignation or draw 
 - Displays available squares for a chess piece when clicked on
-- Highlight squares where opponent moved from and to
-- Sound effects for chess moves, capture and mate
-
-
+- Sound effects for chess moves, check, capture and checkmate
 
 
 ## Demo
 
-Insert gif or link to demo
+![AIChessDemo](https://github.com/pjsiri/AI-Chess-Game/assets/104670311/c528dbe5-786c-4993-9a98-6373552fe673)
 
+## Build
 
+Clone AI-Chess-Game with Git
+
+```bash
+  git clone https://github.com/pjsiri/AI-Chess-Game.git
+```
+
+Note: AI-Chess-Game can be directly imported into NetBeans
+    
 ## License
 
-[MIT](https://choosealicense.com/licenses/mit/)
+AI-Chess-Game is available under the MIT License.
 
+See [License](https://github.com/pjsiri/AI-Chess-Game/blob/main/LICENSE) for more details
 
-## Installation
-
-Install my-project with git
-
-```
-  d
-  
-```
-    

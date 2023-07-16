@@ -1055,7 +1055,6 @@ public class ChessFrame extends JFrame {
 
     private void singleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_singleButtonActionPerformed
         switchTab2(3);
-        
     }//GEN-LAST:event_singleButtonActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
@@ -1415,6 +1414,7 @@ public class ChessFrame extends JFrame {
     {
         jTextPane1.setText("");
         jTextPane2.setText("");
+        jTextPane3.setText("");
         flipToggleButton.setSelected(false);
         restartGame();
         jLabel3.setVisible(false);

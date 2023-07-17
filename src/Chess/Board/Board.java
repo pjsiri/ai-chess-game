@@ -53,6 +53,7 @@ public final class Board {
         pieces.setCopy(boardCopy.getPieces());
         checkPath.addAll(boardCopy.getCheckPath());
         updateBoard();
+        updateStatus();
     }
     
     public int movePiece(int fromSquare, int toSquare)

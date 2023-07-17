@@ -63,7 +63,7 @@ public class ChessController {
     
     public void movePiece()
     {
-        engine.move(7); // Put odd number
+        engine.move(9); // Put odd number
     }
     
     // Uploads manually resigned chess game into the database

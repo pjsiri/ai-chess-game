@@ -87,10 +87,10 @@ public class Engine {
                 return Integer.MAX_VALUE;
             }
         }
-        else if (board.isStalemated(board.getColourTurn())) {
+        if (board.isStalemated(board.getColourTurn())) {
             return 0;
         }
-        else if (depth == 0) {
+        if (depth == 0) {
             return evaluateCaptureMove(board, isMaximizing, alpha, beta);
             //return board.getPieces().getOverallEvaluation();
         }
@@ -100,7 +100,6 @@ public class Engine {
         if (isMaximizing)
         {
             int maxEval = Integer.MIN_VALUE;
-            outerloop:
             for (Integer[] move : moves)
             {
                 Board newBoard = new Board(board);
@@ -134,7 +133,6 @@ public class Engine {
         else
         {
             int minEval = Integer.MAX_VALUE;
-            outerloop:
             for (Integer[] move : moves)
             {
                 Board newBoard = new Board(board);
@@ -176,7 +174,7 @@ public class Engine {
                 return Integer.MAX_VALUE;
             }
         }
-        else if (board.isStalemated(board.getColourTurn())) {
+        if (board.isStalemated(board.getColourTurn())) {
             return 0;
         }
         
@@ -187,8 +185,13 @@ public class Engine {
         
         if (isMaximizing)
         {
-            int maxEval = Integer.MIN_VALUE;
-            outerloop:
+            int eval = board.getPieces().getOverallEvaluation();
+            if (beta <= alpha) {
+                return eval;
+            }
+            alpha = max(alpha, eval);
+            int maxEval = eval;
+            
             for (Integer[] move : moves)
             {
                 Board newBoard = new Board(board);
@@ -198,7 +201,6 @@ public class Engine {
                     newBoard.promote("Q");
                 }
                 
-                int eval;
                 long key = zobristhashing.generateKey(newBoard);
                 if (transpositionTable.containsKey(key)) {
                     eval = transpositionTable.get(key);
@@ -217,8 +219,13 @@ public class Engine {
         }
         else
         {
-            int minEval = Integer.MAX_VALUE;
-            outerloop:
+            int eval = board.getPieces().getOverallEvaluation();
+            if (beta <= alpha) {
+                return eval;
+            }
+            beta = min(beta, eval);
+            int minEval = eval;
+                
             for (Integer[] move : moves)
             {
                 Board newBoard = new Board(board);
@@ -228,7 +235,6 @@ public class Engine {
                     newBoard.promote("Q");
                 }
                 
-                int eval;
                 long key = zobristhashing.generateKey(newBoard);
                 if (transpositionTable.containsKey(key)) {
                     eval = transpositionTable.get(key);
@@ -289,6 +295,13 @@ public class Engine {
             
             if (board.getPieces().getAllTargetSquares(piece.getColour().getOppColour()).contains(move[0])) {
                 priorityScore += piece.getPoints();
+            }
+            
+            Board newBoard = new Board(board);
+            newBoard.movePiece(move[0], move[1]);
+            
+            if (newBoard.isChecked()) {
+                priorityScore++;
             }
             
 //            while (scores.contains(priorityScore)) {

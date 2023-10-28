@@ -27,11 +27,15 @@ Our Java AI chess program, developed with Netbeans 17 and Java 8, builds upon ou
 
 ## Build
 
-Clone AI-Chess-Game with Git
+1. Clone AI-Chess-Game with Git
 
 ```bash
   git clone https://github.com/pjsiri/AI-Chess-Game.git
 ```
+
+2. Start the game by running ChessMain.java
+
+3. Have fun!
 
 Note: AI-Chess-Game can be directly imported into NetBeans
     
